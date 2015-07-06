@@ -7,6 +7,7 @@ Supported Aoplications:
 1. Cisco Secure ACS 5.x
 2. Cisco Adaptive Security Appliance
 3. Cisco Wireless LAN Controller
+4. Cisco WebEx Meeting Server
 
 Supported Features:
 1. Public Key Pinning Extension for HTTP
