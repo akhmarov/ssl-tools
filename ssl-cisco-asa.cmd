@@ -17,6 +17,8 @@ rem #        4. Fill Trustpoint Name field, select root certificate and press In
 rem #        5. Press Add button
 rem #        6. Fill Trustpoint Name field, select intermediate certificate and press Install Certificate button
 rem #        7. Navigate to Configuration -> Device Management -> Certificate Management -> Identity Certificates
+rem #        8. Press Add button
+rem #        9. Fill Trustpoint Name and password fields, select archive file and press Add Certificate button
 rem #
 
 set WORK_DIR=data\cisco-asa
