@@ -3,7 +3,7 @@
 rem #
 rem # Name: ssl-hpkp.cmd
 rem #
-rem # Date: June 2015
+rem # Date: March 2017
 rem #
 rem # Author: Vladimir Akhmarov
 rem #
@@ -32,10 +32,10 @@ cls
 
 set /p PFX_PASS=Enter PFX password:
 
-rem Extracting client certificate to %WORK_DIR%\cl-cert.pem
-%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert.pem -passin pass:%PFX_PASS% -nokeys -clcerts
+rem Extracting client certificate to %WORK_DIR%\cl-cert-tmp.pem
+%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert-tmp.pem -passin pass:%PFX_PASS% -nokeys -clcerts
 rem Remove bag attributes from client certificate file
-%OPENSSL% x509 -in %WORK_DIR%\cl-cert.pem -out %WORK_DIR%\cl-cert.pem
+%OPENSSL% x509 -in %WORK_DIR%\cl-cert-tmp.pem -out %WORK_DIR%\cl-cert.pem
 rem Remove bag attributes from intermediate certificate file
 %OPENSSL% x509 -in %CERT_INTR% -out %WORK_DIR%\ca-intr.pem
 rem Create BASE64 encoded SHA256 hash of the client certificate

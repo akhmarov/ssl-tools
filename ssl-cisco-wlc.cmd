@@ -3,7 +3,7 @@
 rem #
 rem # Name: ssl-cisco-wlc.cmd
 rem #
-rem # Date: June 2015
+rem # Date: March 2017
 rem #
 rem # Author: Vladimir Akhmarov
 rem #
@@ -45,20 +45,20 @@ cls
 
 set /p PFX_PASS=Enter PFX password:
 
-rem Extracting client certificate to %WORK_DIR%\mgmt-cert.pem
-%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\mgmt-cert.pem -passin pass:%PFX_PASS% -nokeys -clcerts
+rem Extracting client certificate to %WORK_DIR%\mgmt-cert-tmp.pem
+%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\mgmt-cert-tmp.pem -passin pass:%PFX_PASS% -nokeys -clcerts
 rem Remove bag attributes from certificate file
-%OPENSSL% x509 -in %WORK_DIR%\mgmt-cert.pem -out %WORK_DIR%\mgmt-cert.pem
+%OPENSSL% x509 -in %WORK_DIR%\mgmt-cert-tmp.pem -out %WORK_DIR%\mgmt-cert.pem
 rem Extracting private key to %WORK_DIR%\mgmt-key.pem
 %OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\mgmt-key.pem -passin pass:%PFX_PASS% -nocerts -passout pass:%PEM_PASS%
 rem Extracting PKCS12 archive to %WORK_DIR%\mgmt-arch.pem
 %OPENSSL% pkcs12 -in %WORK_DIR%\mgmt-cert.pem -out %WORK_DIR%\mgmt-arch.p12 -export -inkey %WORK_DIR%\mgmt-key.pem -passin pass:%PEM_PASS% -passout pass:%PEM_PASS% -clcerts
 %OPENSSL% pkcs12 -in %WORK_DIR%\mgmt-arch.p12 -out %WORK_DIR%\mgmt-arch.pem -passin pass:%PEM_PASS% -passout pass:%PEM_PASS%
 
-rem Extracting client certificate to %WORK_DIR%\wa-cert-cl.pem
-%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\wa-cert-cl.pem -passin pass:%PFX_PASS% -nokeys -clcerts
+rem Extracting client certificate to %WORK_DIR%\wa-cert-cl-tmp.pem
+%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\wa-cert-cl-tmp.pem -passin pass:%PFX_PASS% -nokeys -clcerts
 rem Remove bag attributes from client, intermediate and root certificate files
-%OPENSSL% x509 -in %WORK_DIR%\wa-cert-cl.pem -out %WORK_DIR%\wa-cert-cl.pem
+%OPENSSL% x509 -in %WORK_DIR%\wa-cert-cl-tmp.pem -out %WORK_DIR%\wa-cert-cl.pem
 %OPENSSL% x509 -in %CERT_INTR% -out %WORK_DIR%\ca-intr.pem
 %OPENSSL% x509 -in %CERT_ROOT% -out %WORK_DIR%\ca-root.pem
 rem Combine client, intermediate and root certificates into one file

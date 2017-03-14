@@ -3,7 +3,7 @@
 rem #
 rem # Name: ssl-cisco-wms.cmd
 rem #
-rem # Date: July 2015
+rem # Date: March 2017
 rem #
 rem # Author: Vladimir Akhmarov
 rem #
@@ -45,10 +45,10 @@ cls
 
 set /p PFX_PASS=Enter PFX password:
 
-rem Extract client certificate to %WORK_DIR%\cl-cert.pem
-%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert.pem -passin pass:%PFX_PASS% -nokeys -clcerts
+rem Extract client certificate to %WORK_DIR%\cl-cert-tmp.pem
+%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert-tmp.pem -passin pass:%PFX_PASS% -nokeys -clcerts
 rem Remove bag attributes from client and intermediate certificate files
-%OPENSSL% x509 -in %WORK_DIR%\cl-cert.pem -out %WORK_DIR%\cl-cert.pem
+%OPENSSL% x509 -in %WORK_DIR%\cl-cert-tmp.pem -out %WORK_DIR%\cl-cert.pem
 %OPENSSL% x509 -in %CERT_INTR% -out %WORK_DIR%\ca-intr.pem
 rem Extract private key to %WORK_DIR%\cl-key.pem
 %OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-key12.pem -passin pass:%PFX_PASS% -nocerts -passout pass:%PEM_PASS%

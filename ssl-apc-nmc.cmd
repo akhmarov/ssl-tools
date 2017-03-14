@@ -3,7 +3,7 @@
 rem #
 rem # Name: ssl-apc-nmc.cmd
 rem #
-rem # Date: June 2015
+rem # Date: March 2017
 rem #
 rem # Author: Vladimir Akhmarov
 rem #
@@ -35,10 +35,10 @@ cls
 
 set /p PFX_PASS=Enter PFX password:
 
-rem Extracting client certificate to %WORK_DIR%\cl-cert.pem
-%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert.pem -passin pass:%PFX_PASS% -nokeys -clcerts
+rem Extracting client certificate to %WORK_DIR%\cl-cert-tmp.pem
+%OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-cert-tmp.pem -passin pass:%PFX_PASS% -nokeys -clcerts
 rem Remove bag attributes from certificate file
-%OPENSSL% x509 -in %WORK_DIR%\cl-cert.pem -out %WORK_DIR%\cl-cert.pem
+%OPENSSL% x509 -in %WORK_DIR%\cl-cert-tmp.pem -out %WORK_DIR%\cl-cert.pem
 rem Extracting private key to %WORK_DIR%\cl-key.pem
 %OPENSSL% pkcs12 -in %CERT_PFX% -out %WORK_DIR%\cl-key.pem -passin pass:%PFX_PASS% -nocerts -nodes
 rem Convert private key to PKCS#15 format
