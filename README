@@ -3,11 +3,12 @@ from PFX archives and preparing them for deploying on production
 devices. What you need is to save archive.pfx, ca-intr.crt and
 ca-root.crt files to data folder.
 
-Supported Aoplications:
+Supported Applications:
 1. Cisco Secure ACS 5.x
 2. Cisco Adaptive Security Appliance
 3. Cisco Wireless LAN Controller
 4. Cisco WebEx Meeting Server
+5. HPE Modular Smart Array
 
 Supported Features:
 1. Public Key Pinning Extension for HTTP
