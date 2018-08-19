@@ -1,7 +1,7 @@
 @echo off
 
 rem #
-rem # Name: ssl-hpkp.cmd
+rem # Name: tls-hpkp.cmd
 rem #
 rem # Date: March 2017
 rem #

@@ -1,7 +1,7 @@
 @echo off
 
 rem #
-rem # Name: ssl-cisco-wms.cmd
+rem # Name: tls-cisco-wms.cmd
 rem #
 rem # Date: March 2017
 rem #

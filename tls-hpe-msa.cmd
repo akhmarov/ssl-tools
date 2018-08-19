@@ -1,7 +1,7 @@
 @echo off
 
 rem #
-rem # Name: ssl-hpe-msa.cmd
+rem # Name: tls-hpe-msa.cmd
 rem #
 rem # Date: May 2017
 rem #

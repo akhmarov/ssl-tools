@@ -1,7 +1,7 @@
 @echo off
 
 rem #
-rem # Name: ssl-cisco-asa.cmd
+rem # Name: tls-cisco-asa.cmd
 rem #
 rem # Date: March 2017
 rem #

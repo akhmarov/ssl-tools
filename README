@@ -1,4 +1,4 @@
-This is a collection of SSL scripts for extracting certificates
+This is a collection of TLS scripts for extracting certificates
 from PFX archives and preparing them for deploying on production
 devices. What you need is to save archive.pfx, ca-intr.crt and
 ca-root.crt files to data folder.
